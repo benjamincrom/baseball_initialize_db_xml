@@ -1,3 +1,4 @@
+from os import environ
 from os.path import isfile, abspath
 from sys import argv
 
@@ -5,8 +6,9 @@ from riak import RiakClient
 
 from baseball import get_game_xml_from_url, get_filename_list
 
-DB_PORT = 8087
-XML_BUCKET_NAME = 'xml'
+
+DB_PORT = environ.get('DB_PORT')
+XML_BUCKET_NAME = environ.get('XML_BUCKET_NAME')
 GET_USAGE_STR = ('Usage:\n'
                  '  - ./initialize_db_xml.py url [DATE] [AWAY CODE] [HOME CODE] '
                  '[GAME NUMBER]\n'
